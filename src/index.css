@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Desktop: hint in bottom-right */
+.info-hint {
+  bottom: 28px;
+  right: 28px;
+  text-align: right;
+}
+
+.hint-mobile { display: none; }
+.hint-desktop { display: inline; }
+
+/* Mobile / touch devices */
+@media (pointer: coarse) {
+  .hint-mobile { display: inline; }
+  .hint-desktop { display: none; }
+
+  .info-title {
+    bottom: 48px !important;
+  }
+
+  .info-hint {
+    bottom: 28px;
+    left: 28px;
+    right: auto;
+    text-align: left;
+  }
+}
