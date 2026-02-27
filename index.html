@@ -18,7 +18,34 @@
         padding: 40px 20px;
       }
       h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
-      p.sub { color: #888; font-size: 14px; margin-bottom: 48px; }
+      p.sub { color: #888; font-size: 14px; margin-bottom: 40px; }
+      .hero-img {
+        width: 100%;
+        max-width: 720px;
+        border-radius: 12px;
+        margin-bottom: 24px;
+      }
+      .intro {
+        max-width: 720px;
+        width: 100%;
+        font-size: 14px;
+        line-height: 1.8;
+        color: #b0b0b0;
+        margin-bottom: 40px;
+      }
+      .intro a {
+        color: #7eb8ff;
+        text-decoration: underline;
+      }
+      .section-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #666;
+        margin-bottom: 14px;
+        max-width: 720px;
+        width: 100%;
+      }
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -44,8 +71,29 @@
     </style>
   </head>
   <body>
-    <h1>Spatial Visualizer</h1>
-    <p class="sub">Kyrgyzstan: Axay Uru Valley — 3D mapping data</p>
+    <h1>Kyrgyzstan: Axay Uru Valley</h1>
+    <p class="sub">Spatial Visualizer — 3D mapping data</p>
+
+    <img
+      class="hero-img"
+      src="https://martinedstrom.com/wp-content/uploads/2020/01/MartinEdstrom-KY-MAVIC2PRO-200416-0918-00001412-1536x1024.jpg"
+      alt="Aerial view of the Tian Shan mountains, Kyrgyzstan"
+    />
+
+    <p class="intro">
+      This project is the direct result of the
+      <a href="https://martinedstrom.com/projects/uncharted-caves-of-kyrgyzstan/" target="_blank" rel="noopener noreferrer">Uncharted Caves of Kyrgyzstan</a>
+      expedition. To map and preserve one of Earth's most remote mountain ranges,
+      a multidisciplinary team of scientists and storytellers utilized extensive
+      drone flights and photogrammetry to capture the rugged Tian Shan mountains
+      in high resolution. During the expedition, these 3D models allowed the team
+      to scout complex terrain in real-time and discover previously unrecorded
+      cave systems. The data you are about to explore serves as a vital tool for
+      scientific analysis, immersive storytelling, and ongoing conservation efforts
+      in the pristine Kok-Kiya region.
+    </p>
+
+    <p class="section-label">Explore the data</p>
     <div class="grid">
       <a class="card" href="/pointcloud.html">
         <h2>Point Cloud</h2>
