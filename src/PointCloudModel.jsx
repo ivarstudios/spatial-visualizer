@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
-export default function PointCloudModel({ url }) {
+export default function PointCloudModel({ url, onScaleInfo }) {
   const { scene } = useGLTF(url)
   const groupRef = useRef()
 
@@ -36,6 +36,12 @@ export default function PointCloudModel({ url }) {
         const scale = 3 / maxDim
         groupRef.current.scale.setScalar(scale)
         groupRef.current.position.multiplyScalar(scale)
+
+        // Report scale info back so we can draw a scale bar
+        // GLB units are meters, so metersPerUnit = 1/scale
+        if (onScaleInfo) {
+          onScaleInfo({ metersPerUnit: 1 / scale, rawSize: { x: size.x, y: size.y, z: size.z } })
+        }
       }
     }
   }, [scene])

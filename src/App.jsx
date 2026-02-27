@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import PointCloudModel from './PointCloudModel'
+import ScaleGrid from './ScaleGrid'
 
 // ── Model registry ──────────────────────────────────────────────
 // Add new models here. Each entry needs:
@@ -26,6 +27,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(true)
   const [activeModelId, setActiveModelId] = useState(MODELS[0].id)
   const [infoOpen, setInfoOpen] = useState(false)
+  const [scaleInfo, setScaleInfo] = useState(null)
 
   const activeModel = MODELS.find((m) => m.id === activeModelId)
 
@@ -275,7 +277,10 @@ export default function App() {
         <directionalLight position={[5, 10, 5]} intensity={darkMode ? 0.8 : 1.0} />
 
         {/* Active model */}
-        <activeModel.component url={activeModel.url} />
+        <activeModel.component url={activeModel.url} onScaleInfo={setScaleInfo} />
+
+        {/* 1km scale grid */}
+        {scaleInfo && <ScaleGrid metersPerUnit={scaleInfo.metersPerUnit} darkMode={darkMode} />}
 
         {/* Orbit controls with auto-rotate */}
         <OrbitControls
