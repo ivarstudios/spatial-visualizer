@@ -54,4 +54,4 @@ export default function PointCloudModel({ url, onScaleInfo }) {
 }
 
 // Preload the model
-useGLTF.preload('/models/260227-Rivermeet-Pointcloud_262k_cleaned.glb')
+useGLTF.preload(`${import.meta.env.BASE_URL}models/260227-Rivermeet-Pointcloud_262k_cleaned.glb`)

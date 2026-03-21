@@ -15,7 +15,7 @@ const MODELS = [
   {
     id: 'pointcloud',
     label: 'Point Cloud',
-    url: '/models/260227-Rivermeet-Pointcloud_262k_cleaned.glb',
+    url: `${import.meta.env.BASE_URL}models/260227-Rivermeet-Pointcloud_262k_cleaned.glb`,
     component: PointCloudModel,
   },
   // Future examples:
