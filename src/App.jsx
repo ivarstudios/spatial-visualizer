@@ -158,7 +158,7 @@ export default function App() {
             </button>
 
             <img
-              src="https://martinedstrom.com/wp-content/uploads/2020/01/MartinEdstrom-KY-MAVIC2PRO-200416-0918-00001412-1536x1024.jpg"
+              src={`${import.meta.env.BASE_URL}img/kyrgyz.webp`}
               alt="Aerial view of the Tian Shan mountains, Kyrgyzstan"
               style={{
                 width: '100%',
