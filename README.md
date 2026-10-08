@@ -2,7 +2,7 @@
 
 A browser-based 3D viewer for spatial mapping data from the [Uncharted Caves of Kyrgyzstan](https://martinedstrom.com/projects/uncharted-caves-of-kyrgyzstan/) expedition. You can explore drone photogrammetry of the Axay Uru Valley in the Tian Shan mountains on desktop or mobile, with no install needed.
 
-**Live site:** [kyrgyzcaves.edstrom.photo](https://kyrgyzcaves.edstrom.photo)
+**Live site:** [ivarstudios.github.io/spatial-visualizer](https://ivarstudios.github.io/spatial-visualizer/)
 
 ![Aerial view of the Tian Shan mountains, Kyrgyzstan](public/img/kyrgyz.webp)
 
@@ -27,14 +27,14 @@ The long-term goal is to support point clouds, meshes and Gaussian splats in the
 
 ## Getting started
 
-Requires Node.js 20.19+ (or 22.12+).
+Requires Node.js 22 or newer.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` for the landing page, or go straight to `http://localhost:5173/pointcloud.html`.
+Open `http://localhost:5173/spatial-visualizer/` for the landing page, or go straight to `http://localhost:5173/spatial-visualizer/pointcloud.html`. The `/spatial-visualizer/` prefix matches the GitHub Pages path (`base` in `vite.config.js`).
 
 The dev server listens on your local network as well, so you can test on a phone on the same Wi-Fi using the **Network** URL that Vite prints.
 
@@ -61,20 +61,22 @@ public/
   models/               ← GLB model files
   img/                  ← Hero / social preview image
 vite.config.js          ← Multi-page Vite configuration
-.github/workflows/      ← Build and deploy to Cloudflare Pages
+.github/workflows/      ← Build and deploy to GitHub Pages
 ```
 
 ## Adding a model or page
 
 1. Put the model file in `public/models/`.
-2. Add an entry to the `MODELS` array in [`src/App.jsx`](src/App.jsx) with an `id`, `label`, `url` and the component that renders it.
+2. Add an entry to the `MODELS` array in [`src/App.jsx`](src/App.jsx) with an `id`, `label`, `url` and the component that renders it. Build the `url` from `import.meta.env.BASE_URL` (as the existing entry does) so it works under the `/spatial-visualizer/` path.
 3. For a new standalone page, add an HTML entry (for example, `mesh.html`) and register it under `build.rollupOptions.input` in [`vite.config.js`](vite.config.js).
 
 The model loader assumes GLB units are meters. The scale grid relies on this.
 
 ## Deployment
 
-Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and deploys `dist/` to Cloudflare Pages. Pull requests from branches in this repo get a preview deployment. The workflow needs two repository secrets, `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. Workflows triggered from forks don't get these secrets.
+Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site and deploys `dist/` to GitHub Pages. Pull requests, including those from forks, only run the build to check that it passes, and nothing is deployed. You can also start a deploy by hand from the Actions tab.
+
+In the repo settings, the Pages source must be set to **GitHub Actions** (Settings → Pages).
 
 ## Data
 
